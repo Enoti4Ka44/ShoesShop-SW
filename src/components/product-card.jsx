@@ -1,4 +1,11 @@
+"use client";
+
+import { useCart } from "./cart-provider";
+
 export default function ProductCard({ product }) {
+  const { addToCart } = useCart();
+  const isOutOfStock = product.stock_quantity <= 0;
+
   return (
     <div className="border border-black/10 rounded-xl p-4 bg-white shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
       <div>
@@ -14,27 +21,36 @@ export default function ProductCard({ product }) {
         <h3 className="text-lg font-bold text-gray-900 leading-tight mb-1">
           {product.name}
         </h3>
-
         <p className="text-sm text-gray-600 mb-4">
-          {product.category} • {product.color}
+          {product.category} • {product.color} • Размер: {product.shoe_size}
         </p>
-
-        <div className="flex flex-wrap gap-2 mb-4">
-          <span className="px-2 py-1 bg-gray-100 text-xs rounded-md">
-            Размер: {product.shoe_size}
-          </span>
-          <span
-            className={`px-2 py-1 text-xs rounded-md ${product.stock_quantity > 0 ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"}`}
-          >
-            В наличии: {product.stock_quantity}
-          </span>
-        </div>
       </div>
 
       <div className="border-t pt-4 mt-auto">
-        <span className="text-xl font-black">
-          {Number(product.price).toLocaleString("ru-RU")} ₽
-        </span>
+        <div className="flex justify-between items-center mb-4">
+          <span className="text-xl font-black">
+            {Number(product.price).toLocaleString("ru-RU")} ₽
+          </span>
+          <span
+            className={`text-xs font-medium ${isOutOfStock ? "text-red-500" : "text-green-600"}`}
+          >
+            {isOutOfStock
+              ? "Нет в наличии"
+              : `Осталось: ${product.stock_quantity}`}
+          </span>
+        </div>
+
+        <button
+          onClick={() => addToCart(product)}
+          disabled={isOutOfStock}
+          className={`w-full py-2 px-4 rounded-md font-medium transition-colors ${
+            isOutOfStock
+              ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+              : "bg-black text-white hover:bg-gray-800"
+          }`}
+        >
+          {isOutOfStock ? "Распродано" : "В корзину"}
+        </button>
       </div>
     </div>
   );
