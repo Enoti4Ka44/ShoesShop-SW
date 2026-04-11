@@ -13,7 +13,6 @@ export default function CheckoutPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
 
     const formData = {
       first_name: e.target.first_name.value,
@@ -24,7 +23,6 @@ export default function CheckoutPage() {
     };
 
     const result = await processCheckout(formData, cart);
-    setLoading(false);
 
     if (result.success) {
       alert("Заказ успешно оформлен!");

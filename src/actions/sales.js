@@ -4,24 +4,6 @@ import { query } from "@/utils/db";
 import { revalidatePath } from "next/cache";
 
 //Запрос на покупку товаров из корзины
-export async function checkoutCart(cartItems, clientId = 1) {
-  try {
-    const cartJson = JSON.stringify(cartItems);
-
-    const result = await query(`SELECT checkout_cart_json($1, $2) AS sale_id`, [
-      clientId,
-      cartJson,
-    ]);
-
-    const saleId = result.rows[0].sale_id;
-    return { success: true, saleId };
-  } catch (error) {
-    console.error("Ошибка при оформлении заказа:", error);
-
-    return { success: false, error: error.message };
-  }
-}
-
 export async function processCheckout(formData, cartItems) {
   try {
     const { first_name, last_name, email, phone, payment_method } = formData;

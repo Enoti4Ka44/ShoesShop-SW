@@ -30,6 +30,9 @@ export default function Header() {
             <li className="hover:text-black transition">
               <Link href="/clients">Клиенты</Link>
             </li>
+            <li className="hover:text-black transition">
+              <Link href="/products">Товары</Link>
+            </li>
           </ul>
         </nav>
 
