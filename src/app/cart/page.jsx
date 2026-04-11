@@ -53,7 +53,7 @@ export default function CheckoutPage() {
           {cart.map((item) => (
             <div
               key={item.product_id}
-              className="flex gap-4 p-4 border rounded-xl bg-white shadow-sm"
+              className="flex gap-4 p-4 border border-black/10 shadow-md rounded-xl bg-white shadow-sm"
             >
               <div className="flex-1">
                 <h3 className="font-bold">{item.name}</h3>
@@ -61,12 +61,12 @@ export default function CheckoutPage() {
                   {item.brand} | {item.color} | {item.shoe_size}
                 </p>
                 <div className="mt-2 flex items-center gap-4">
-                  <div className="flex items-center border rounded-lg">
+                  <div className="flex items-center font-bold">
                     <button
                       onClick={() =>
                         updateQuantity(item.product_id, item.quantity - 1)
                       }
-                      className="px-3 py-1 hover:bg-gray-50 cursor-pointer"
+                      className="w-6 h-6 text-center hover:bg-gray-300 cursor-pointer bg-gray-200 rounded-full"
                     >
                       -
                     </button>
@@ -75,7 +75,7 @@ export default function CheckoutPage() {
                       onClick={() =>
                         updateQuantity(item.product_id, item.quantity + 1)
                       }
-                      className="px-3 py-1 hover:bg-gray-50 cursor-pointer"
+                      className="w-6 h-6 text-center hover:bg-gray-300 cursor-pointer bg-gray-200 rounded-full"
                       disabled={item.quantity >= item.stock_quantity}
                     >
                       +
@@ -95,13 +95,13 @@ export default function CheckoutPage() {
             </div>
           ))}
         </div>
-        <div className="mt-8 border-t pt-4 flex justify-between items-center text-2xl font-black">
+        <div className="mt-8 border-t border-black/10 pt-4 flex justify-between items-center text-2xl font-black">
           <span>Итого:</span>
           <span>{total.toLocaleString()} ₽</span>
         </div>
       </div>
 
-      <div className="bg-gray-50 p-8 rounded-2xl border">
+      <div className="bg-gray-50 p-8 rounded-2xl border border-black/10 shadow-md">
         <h2 className="text-2xl font-bold mb-6">Данные покупателя</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
@@ -110,7 +110,7 @@ export default function CheckoutPage() {
               <input
                 name="first_name"
                 required
-                className="w-full p-2 border rounded-md"
+                className="w-full p-2 border border-black/20 rounded-md"
               />
             </div>
             <div>
@@ -118,7 +118,7 @@ export default function CheckoutPage() {
               <input
                 name="last_name"
                 required
-                className="w-full p-2 border rounded-md"
+                className="w-full p-2 border border-black/20 rounded-md"
               />
             </div>
           </div>
@@ -128,7 +128,7 @@ export default function CheckoutPage() {
               name="email"
               type="email"
               required
-              className="w-full p-2 border rounded-md"
+              className="w-full p-2 border border-black/20 rounded-md"
             />
           </div>
           <div>
@@ -137,7 +137,7 @@ export default function CheckoutPage() {
               name="phone"
               type="tel"
               required
-              className="w-full p-2 border rounded-md"
+              className="w-full p-2 border border-black/20 rounded-md"
             />
           </div>
           <div>
@@ -146,7 +146,7 @@ export default function CheckoutPage() {
             </label>
             <select
               name="payment_method"
-              className="w-full p-2 border rounded-md"
+              className="w-full p-2 border border-black/20 rounded-md"
             >
               <option value="Card">Карта</option>
               <option value="Cash">Наличные</option>
