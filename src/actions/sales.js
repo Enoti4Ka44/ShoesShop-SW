@@ -90,3 +90,46 @@ export async function createReturn(saleItemId) {
     return { success: false, error: error.message };
   }
 }
+
+// Запрос на получение всех возвратов с данными о товаре и клиенте
+export async function getReturns() {
+  try {
+    const sql = `
+      SELECT 
+        r.return_id, 
+        r.return_date, 
+        r.refund_amount,
+        p.name as product_name,
+        p.item_number,
+        p.brand,
+        c.first_name,
+        c.last_name,
+        si.quantity
+      FROM returns r
+      JOIN sale_items si ON r.sale_item_id = si.sale_item_id
+      JOIN products p ON si.product_id = p.product_id
+      JOIN sales s ON si.sale_id = s.sale_id
+      JOIN clients c ON s.client_id = c.client_id
+      ORDER BY r.return_date DESC;
+    `;
+    const { rows } = await query(sql);
+    return rows;
+  } catch (error) {
+    console.error("Ошибка при получении возвратов:", error);
+    return [];
+  }
+}
+
+// Запрос на удаление записи возврата товара
+export async function deleteReturn(returnId) {
+  try {
+    await query("DELETE FROM returns WHERE return_id = $1", [returnId]);
+
+    revalidatePath("/returns");
+    revalidatePath("/sales");
+    return { success: true };
+  } catch (error) {
+    console.error("Ошибка при удалении возврата:", error);
+    return { success: false, error: error.message };
+  }
+}

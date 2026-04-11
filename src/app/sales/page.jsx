@@ -8,13 +8,13 @@ export default async function SalesPage() {
     <div className="p-8">
       <h1 className="text-3xl font-bold mb-8">История продаж</h1>
 
-      <div className="md:grid grid-cols-3 gap-8 grid-cols-1 justify-center">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 grid-cols-1 justify-center">
         {sales.map((sale) => (
           <div
             key={sale.sale_id}
-            className="bg-white border rounded-2xl shadow-sm overflow-hidden"
+            className="bg-white border border-black/10 rounded-xl shadow-sm overflow-hidden"
           >
-            <div className="bg-gray-50 p-4 border-b flex justify-between items-center">
+            <div className="bg-gray-50 p-4 border-b border-black/20 flex justify-between items-center">
               <div>
                 <span className="text-sm font-bold text-gray-900">
                   Заказ №{sale.sale_id}
@@ -51,7 +51,7 @@ export default async function SalesPage() {
                       </span>
 
                       {item.is_returned ? (
-                        <span className="text-xs font-bold text-red-500 bg-red-50 px-2 py-1 rounded">
+                        <span className="text-center text-xs font-bold text-white bg-red-400 px-2 py-1.5 rounded">
                           Возврат оформлен
                         </span>
                       ) : (
@@ -63,7 +63,7 @@ export default async function SalesPage() {
               </div>
             </div>
 
-            <div className="p-4 bg-gray-50/50 flex justify-between items-center border-t">
+            <div className="p-4 bg-gray-50/50 flex justify-between items-center border-t border-black/20">
               <span className="text-xs text-gray-500 font-medium uppercase tracking-wider">
                 Оплата: {sale.payment_method}
               </span>

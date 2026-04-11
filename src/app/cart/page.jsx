@@ -66,7 +66,7 @@ export default function CheckoutPage() {
                       onClick={() =>
                         updateQuantity(item.product_id, item.quantity - 1)
                       }
-                      className="px-3 py-1 hover:bg-gray-50"
+                      className="px-3 py-1 hover:bg-gray-50 cursor-pointer"
                     >
                       -
                     </button>
@@ -75,7 +75,7 @@ export default function CheckoutPage() {
                       onClick={() =>
                         updateQuantity(item.product_id, item.quantity + 1)
                       }
-                      className="px-3 py-1 hover:bg-gray-50"
+                      className="px-3 py-1 hover:bg-gray-50 cursor-pointer"
                       disabled={item.quantity >= item.stock_quantity}
                     >
                       +
@@ -83,7 +83,7 @@ export default function CheckoutPage() {
                   </div>
                   <button
                     onClick={() => removeFromCart(item.product_id)}
-                    className="text-red-500 text-sm hover:underline"
+                    className="text-red-500 text-sm hover:underline cursor-pointer"
                   >
                     Удалить
                   </button>
@@ -154,7 +154,7 @@ export default function CheckoutPage() {
           </div>
           <button
             type="submit"
-            className="w-full bg-black text-white py-4 rounded-xl font-bold text-lg mt-6 hover:bg-gray-800 transition disabled:bg-gray-400"
+            className="cursor-pointer w-full bg-black text-white py-4 rounded-xl font-bold text-lg mt-6 hover:bg-gray-800 transition disabled:bg-gray-400"
           >
             Оплатить {total.toLocaleString()} ₽
           </button>

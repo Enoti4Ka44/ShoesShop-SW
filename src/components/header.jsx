@@ -38,14 +38,14 @@ export default function Header() {
 
         <Link
           href="/cart"
-          className="relative p-2 hover:bg-gray-100 rounded-full transition"
+          className="flex gap-2 items-center relative font-semibold text-black/60 hover:text-black transition transition"
         >
-          Корзина
           {cartItemsCount > 0 && (
-            <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">
+            <span className="bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">
               {cartItemsCount}
             </span>
           )}
+          Корзина
         </Link>
       </div>
     </header>

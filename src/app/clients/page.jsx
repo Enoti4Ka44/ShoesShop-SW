@@ -4,10 +4,10 @@ export default async function ClientsPage() {
   const clients = await getClients();
 
   return (
-    <div className="max-w-6xl mx-auto p-8">
+    <div className=" p-8">
       <h1 className="text-3xl font-bold mb-8">База клиентов</h1>
 
-      <div className="bg-white border rounded-xl overflow-hidden shadow-sm">
+      <div className=" overflow-hidden shadow-sm">
         <table className="w-full text-left border-collapse">
           <thead>
             <tr className="bg-gray-50 border-b">
@@ -21,7 +21,7 @@ export default async function ClientsPage() {
             {clients.map((client) => (
               <tr
                 key={client.client_id}
-                className="border-b last:border-0 hover:bg-gray-50 transition"
+                className="border-b border-black/20 last:border-0 hover:bg-gray-50 transition"
               >
                 <td className="p-4 text-sm font-medium">
                   {client.first_name} {client.last_name}

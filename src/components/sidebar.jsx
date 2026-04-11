@@ -127,14 +127,14 @@ export default function Sidebar({ currentParams }) {
       <div className="flex flex-col gap-2 mt-4">
         <button
           type="submit"
-          className="bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 transition"
+          className="cursor-pointer bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 transition"
         >
           Применить
         </button>
         <button
           type="button"
           onClick={resetFilters}
-          className="bg-gray-200 text-black py-2 px-4 rounded-md hover:bg-gray-300 transition"
+          className="cursor-pointer bg-gray-200 text-black py-2 px-4 rounded-md hover:bg-gray-300 transition"
         >
           Сбросить
         </button>

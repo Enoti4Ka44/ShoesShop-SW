@@ -1,16 +1,18 @@
 import { getProducts } from "@/actions/products";
 import ProductCardFunc from "@/components/product-card-func";
+import AddProductButton from "@/components/add-product-button";
 
 export default async function ProductsPage({ searchParams }) {
   const params = await searchParams;
   const products = await getProducts(params);
 
-  console.log(products);
-
   return (
     <div className="flex min-h-screen bg-gray-50">
       <main className="flex-1 p-6">
-        <h1 className="text-3xl font-bold mb-6">Все товары</h1>
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-3xl font-bold">Все товары</h1>
+          <AddProductButton />
+        </div>
 
         {products.length === 0 ? (
           <p className="text-gray-500">Товары не найдены</p>

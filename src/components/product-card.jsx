@@ -32,7 +32,7 @@ export default function ProductCard({ product }) {
             {Number(product.price).toLocaleString("ru-RU")} ₽
           </span>
           <span
-            className={`text-xs font-medium ${isOutOfStock ? "text-red-500" : "text-green-600"}`}
+            className={`text-xs font-bold font-medium ${isOutOfStock ? "text-red-500" : "text-green-600"}`}
           >
             {isOutOfStock
               ? "Нет в наличии"
@@ -43,7 +43,7 @@ export default function ProductCard({ product }) {
         <button
           onClick={() => addToCart(product)}
           disabled={isOutOfStock}
-          className={`w-full py-2 px-4 rounded-md font-medium transition-colors ${
+          className={`cursor-pointer w-full py-2 px-4 rounded-md font-medium transition-colors ${
             isOutOfStock
               ? "bg-gray-100 text-gray-400 cursor-not-allowed"
               : "bg-black text-white hover:bg-gray-800"
